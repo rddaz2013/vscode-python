@@ -10,7 +10,7 @@ RUN apt-get -y update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install QUARTO
-ARG QUARTO_VERSION="0.9.508"
+ARG QUARTO_VERSION="1.2.313"
 RUN wget "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
 RUN apt install "./quarto-${QUARTO_VERSION}-linux-amd64.deb"
 RUN quarto install tinytex --update-path
