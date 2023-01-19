@@ -1,4 +1,4 @@
-FROM codercom/code-server:4.4.0
+FROM codercom/code-server:latest
 ARG PYTHON_VERSION=3.10
 
 USER root
