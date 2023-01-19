@@ -13,6 +13,8 @@ RUN apt-get -y update && \
 ARG QUARTO_VERSION="0.9.508"
 RUN wget "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
 RUN apt install "./quarto-${QUARTO_VERSION}-linux-amd64.deb"
+RUN quarto install tinytex --update-path
+RUN apt-get update && apt-get install -y nano && apt-get clean
 
 # Switch back to non-root user
 USER coder
@@ -52,4 +54,3 @@ RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
 RUN code-server --install-extension redhat.vscode-yaml
 RUN code-server --install-extension quarto.quarto
-RUN code-server --install-extension mhutchie.git-graph
