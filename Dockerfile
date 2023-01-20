@@ -13,11 +13,11 @@ RUN apt-get -y update && \
 ARG QUARTO_VERSION="1.2.313"
 RUN wget "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
 RUN apt install "./quarto-${QUARTO_VERSION}-linux-amd64.deb"
-RUN quarto install tinytex --update-path
 RUN apt-get update && apt-get install -y nano && apt-get clean
 
 # Switch back to non-root user
 USER coder
+RUN quarto install tinytex --update-path
 
 # INSTALL MINICONDA -------------------------------
 ARG CONDA_DIR=/home/coder/local/bin/conda
@@ -49,8 +49,6 @@ COPY --chown=coder:coder settings/Machine.json /home/coder/.local/share/code-ser
 
 # INSTALL VSTUDIO EXTENSIONS
 RUN code-server --install-extension ms-python.python
-RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
-RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
 RUN code-server --install-extension redhat.vscode-yaml
 RUN code-server --install-extension quarto.quarto
