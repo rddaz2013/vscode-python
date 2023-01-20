@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y nano && apt-get clean
 
 # Switch back to non-root user
 USER coder
-RUN quarto install tinytex --update-path
+RUN quarto install tinytex
 
 # INSTALL MINICONDA -------------------------------
 ARG CONDA_DIR=/home/coder/local/bin/conda
