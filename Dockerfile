@@ -14,8 +14,7 @@ ARG QUARTO_VERSION="1.2.313"
 RUN wget "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
 RUN apt install "./quarto-${QUARTO_VERSION}-linux-amd64.deb"
 
-RUN apt-get update && apt-get install -y nano git && apt-get clean
-RUN apt-get install libfontconfig
+RUN apt-get update && apt-get install -y nano git libfontconfig && apt-get clean
 
 # Switch back to non-root user
 USER coder
